@@ -6,10 +6,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Services.Customers.Data;
 
-namespace Services.Books.Data.Migrations
+namespace Services.Books.Migrations
 {
     [DbContext(typeof(BookDBContext))]
-    partial class BookDbContextModelSnapshot : ModelSnapshot
+    partial class BookDBContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -18,7 +18,7 @@ namespace Services.Books.Data.Migrations
                 .HasDefaultSchema("book")
                 .UseIdentityByDefaultColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 63)
-                .HasAnnotation("BookVersion", "5.0.0");
+                .HasAnnotation("ProductVersion", "5.0.0");
 
             modelBuilder.Entity("Services.Books.Data.Book", b =>
                 {

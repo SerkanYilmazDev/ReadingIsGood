@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Services.Customers.Data;
 
-namespace Services.Orders.Data.Migrations
+namespace Services.Orders.Migrations
 {
     [DbContext(typeof(OrderDBContext))]
     partial class OrderDBContextModelSnapshot : ModelSnapshot
@@ -18,7 +18,7 @@ namespace Services.Orders.Data.Migrations
                 .HasDefaultSchema("order")
                 .UseIdentityByDefaultColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 63)
-                .HasAnnotation("BookVersion", "5.0.0");
+                .HasAnnotation("ProductVersion", "5.0.0");
 
             modelBuilder.Entity("Services.Orders.Data.Order", b =>
                 {

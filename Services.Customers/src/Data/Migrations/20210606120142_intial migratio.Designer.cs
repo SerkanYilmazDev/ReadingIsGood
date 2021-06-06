@@ -10,8 +10,8 @@ using Services.Customers.Data;
 namespace Services.Customers.Migrations
 {
     [DbContext(typeof(CustomerDBContext))]
-    [Migration("20210606110029_initial migration")]
-    partial class initialmigration
+    [Migration("20210606120142_intial migratio")]
+    partial class intialmigratio
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,7 +20,7 @@ namespace Services.Customers.Migrations
                 .HasDefaultSchema("customer")
                 .UseIdentityByDefaultColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 63)
-                .HasAnnotation("BookVersion", "5.0.0");
+                .HasAnnotation("ProductVersion", "5.0.0");
 
             modelBuilder.Entity("Services.Customers.Data.Basket", b =>
                 {

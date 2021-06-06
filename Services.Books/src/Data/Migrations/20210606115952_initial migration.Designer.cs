@@ -10,7 +10,7 @@ using Services.Customers.Data;
 namespace Services.Books.Migrations
 {
     [DbContext(typeof(BookDBContext))]
-    [Migration("20210606104203_initial migration")]
+    [Migration("20210606115952_initial migration")]
     partial class initialmigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,7 +20,7 @@ namespace Services.Books.Migrations
                 .HasDefaultSchema("book")
                 .UseIdentityByDefaultColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 63)
-                .HasAnnotation("BookVersion", "5.0.0");
+                .HasAnnotation("ProductVersion", "5.0.0");
 
             modelBuilder.Entity("Services.Books.Data.Book", b =>
                 {
