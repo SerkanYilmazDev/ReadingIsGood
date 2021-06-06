@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Services.Customers.Commands;
 using Services.Customers.Data;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace Services.Customers.Controllers
 {
@@ -23,6 +24,7 @@ namespace Services.Customers.Controllers
         }
 
         [HttpGet("{customerId}")]
+        [SwaggerOperation(Summary = "Get Customer Basket")]
         public async Task<ActionResult> Get(Guid customerId)
         {
             return Ok(await _dbContext.Baskets
@@ -32,6 +34,7 @@ namespace Services.Customers.Controllers
         }
 
         [HttpPost]
+        [SwaggerOperation(Summary = "Add Book to Customer Basket")]
         public async Task<ActionResult> AddBookToBasket(AddBookToBasketCommand command)
         {
             return Ok(await _mediator.Send(command));

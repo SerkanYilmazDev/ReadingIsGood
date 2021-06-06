@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Services.Customers.Data;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace Services.Customers.Controllers
 {
@@ -18,12 +19,14 @@ namespace Services.Customers.Controllers
         }
 
         [HttpGet("{id}")]
+        [SwaggerOperation(Summary = "Get Customer By Id")]
         public async Task<ActionResult> Get(Guid id)
         {
             return Ok(await _dbContext.Customers.FindAsync(id));
         }
 
         [HttpGet]
+        [SwaggerOperation(Summary = "Get All Customers")]
         public async Task<ActionResult> Get()
         {
             return Ok(await _dbContext.Customers.ToListAsync());
