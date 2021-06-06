@@ -69,6 +69,7 @@
           "Port": 5005
         }
       ],
+      "SwaggerKey": "customer-api",
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "Bearer",
         "AllowedScopes": []
@@ -148,6 +149,7 @@
           "Port": 5005
         }
       ],
+      "SwaggerKey": "basket-api",
       "QoSOptions": {
         "ExceptionsAllowedBeforeBreaking": 3,
         "DurationOfBreak": 10000,

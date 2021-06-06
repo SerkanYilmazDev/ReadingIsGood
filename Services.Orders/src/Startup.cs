@@ -100,6 +100,13 @@ namespace Services.Orders
                 endpoints.MapControllers();
                 endpoints.MapGet("", async context => await context.Response.WriteAsync("Order service is up."));
             });
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "MY API V1");
+            });
         }
     }
 }
