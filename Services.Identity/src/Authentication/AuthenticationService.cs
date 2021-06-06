@@ -14,7 +14,7 @@ namespace Services.Identity.Authentication
             var tokenHandler = new JwtSecurityTokenHandler();
             var tokenDescriptor = new SecurityTokenDescriptor
             {
-                Audience = "Suat KÖSE",
+                Audience = "Serkan YILMAZ",
                 Issuer = "localhost",
                 Subject = new ClaimsIdentity(new Claim[]
                 {

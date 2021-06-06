@@ -75,7 +75,7 @@ namespace Api
                 ValidateIssuer = true,
                 ValidIssuer = "localhost",
                 ValidateAudience = true,
-                ValidAudience = "Suat KÖSE",
+                ValidAudience = "Serkan YILMAZ",
                 ValidateLifetime = true,
                 RequireExpirationTime = true,
             };
