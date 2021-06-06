@@ -275,3 +275,5 @@ __pycache__/
 
 NuGet.config
 appsettings.local.json
+!NuGet.exe
+*.exe

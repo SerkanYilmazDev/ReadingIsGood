@@ -1,193 +1,252 @@
 {
-    "GlobalConfiguration": {
-        "BaseUrl": "http://localhost:5000"
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:5000"
+  },
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/identity-api/{everything}",
+      "UpstreamHttpMethod": [
+        "Post"
+      ],
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5001
+        }
+      ],
+      "SwaggerKey": "identity-api",
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 30000,
+        "TimeoutValue": 3000
+      },
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "1m",
+        "PeriodTimespan": 30,
+        "Limit": 20
+      }
     },
-    "Routes": [
+    {
+      "UpstreamPathTemplate": "/customer-api",
+      "UpstreamHttpMethod": [
+        "Post",
+        "Get"
+      ],
+      "DownstreamPathTemplate": "/api/customers",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
         {
-            "UpstreamPathTemplate": "/identity-api/{everything}",
-            "UpstreamHttpMethod": [
-                "Post"
-            ],
-            "DownstreamPathTemplate": "/api/{everything}",
-            "DownstreamScheme": "http",
-            "DownstreamHostAndPorts": [
-                {
-                    "Host": "localhost",
-                    "Port": 5001
-                }
-            ],
-            "QoSOptions": {
-                "ExceptionsAllowedBeforeBreaking": 3,
-                "DurationOfBreak": 30000,
-                "TimeoutValue": 3000
-            },
-            "RateLimitOptions": {
-                "ClientWhitelist": [],
-                "EnableRateLimiting": true,
-                "Period": "1m",
-                "PeriodTimespan": 30,
-                "Limit": 20
-            }
-        },
-        {
-            "UpstreamPathTemplate": "/customer-api",
-            "UpstreamHttpMethod": [
-                "Post",
-                "Get"
-            ],
-            "DownstreamPathTemplate": "/api/customers",
-            "DownstreamScheme": "http",
-            "DownstreamHostAndPorts": [
-                {
-                    "Host": "localhost",
-                    "Port": 5005
-                }
-            ],
-            "AuthenticationOptions": {
-                "AuthenticationProviderKey": "Bearer",
-                "AllowedScopes": []
-            },
-            "QoSOptions": {
-                "ExceptionsAllowedBeforeBreaking": 3,
-                "DurationOfBreak": 10000,
-                "TimeoutValue": 3000
-            },
-            "Key": "customers"
-        },
-        {
-            "UpstreamPathTemplate": "/customer-api/{everything}",
-            "UpstreamHttpMethod": [
-                "Get"
-            ],
-            "DownstreamPathTemplate": "/api/customers/{everything}",
-            "DownstreamScheme": "http",
-            "DownstreamHostAndPorts": [
-                {
-                    "Host": "localhost",
-                    "Port": 5005
-                }
-            ],
-            "AuthenticationOptions": {
-                "AuthenticationProviderKey": "Bearer",
-                "AllowedScopes": []
-            },
-            "QoSOptions": {
-                "ExceptionsAllowedBeforeBreaking": 3,
-                "DurationOfBreak": 10000,
-                "TimeoutValue": 3000
-            }
-        },
-        {
-            "UpstreamPathTemplate": "/book-api",
-            "UpstreamHttpMethod": [
-                "Post",
-                "Get"
-            ],
-            "DownstreamPathTemplate": "/api/books",
-            "DownstreamScheme": "http",
-            "DownstreamHostAndPorts": [
-                {
-                    "Host": "localhost",
-                    "Port": 5010
-                }
-            ],
-            "AuthenticationOptions": {
-                "AuthenticationProviderKey": "Bearer",
-                "AllowedScopes": []
-            },
-            "QoSOptions": {
-                "ExceptionsAllowedBeforeBreaking": 3,
-                "DurationOfBreak": 10000,
-                "TimeoutValue": 3000
-            },
-            "FileCacheOptions": {
-                "TtlSeconds": 15
-            },
-            "Key": "books"
-        },
-        {
-            "UpstreamPathTemplate": "/basket-api",
-            "UpstreamHttpMethod": [
-                "Post"
-            ],
-            "DownstreamPathTemplate": "/api/baskets",
-            "DownstreamScheme": "http",
-            "DownstreamHostAndPorts": [
-                {
-                    "Host": "localhost",
-                    "Port": 5005
-                }
-            ],
-            "QoSOptions": {
-                "ExceptionsAllowedBeforeBreaking": 3,
-                "DurationOfBreak": 10000,
-                "TimeoutValue": 3000
-            },
-            "AuthenticationOptions": {
-                "AuthenticationProviderKey": "Bearer",
-                "AllowedScopes": []
-            },
-            "AddHeadersToRequest": {
-                "user_id": "Claims[user_id] > value"
-            }
-        },
-        {
-            "UpstreamPathTemplate": "/basket-api/{everything}",
-            "UpstreamHttpMethod": [
-                "Get"
-            ],
-            "DownstreamPathTemplate": "/api/baskets/{everything}",
-            "DownstreamScheme": "http",
-            "DownstreamHostAndPorts": [
-                {
-                    "Host": "localhost",
-                    "Port": 5005
-                }
-            ],
-            "QoSOptions": {
-                "ExceptionsAllowedBeforeBreaking": 3,
-                "DurationOfBreak": 10000,
-                "TimeoutValue": 3000
-            },
-            "AuthenticationOptions": {
-                "AuthenticationProviderKey": "Bearer",
-                "AllowedScopes": []
-            }
-        },
-        {
-            "UpstreamPathTemplate": "/order-api/{everything}",
-            "UpstreamHttpMethod": [
-                "Get"
-            ],
-            "DownstreamPathTemplate": "/api/orders/{everything}",
-            "DownstreamScheme": "http",
-            "DownstreamHostAndPorts": [
-                {
-                    "Host": "localhost",
-                    "Port": 5015
-                }
-            ],
-            "QoSOptions": {
-                "ExceptionsAllowedBeforeBreaking": 3,
-                "DurationOfBreak": 10000,
-                "TimeoutValue": 3000
-            },
-            "AuthenticationOptions": {
-                "AuthenticationProviderKey": "Bearer",
-                "AllowedScopes": []
-            }
+          "Host": "localhost",
+          "Port": 5005
         }
-    ],
-    "Aggregates": [
+      ],
+      "SwaggerKey": "customer-api",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 10000,
+        "TimeoutValue": 3000
+      },
+      "Key": "customers"
+    },
+    {
+      "UpstreamPathTemplate": "/customer-api/{everything}",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "DownstreamPathTemplate": "/api/customers/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
         {
-            "RouteKeys": [
-                "customers",
-                "books"
-            ],
-            "UpstreamPathTemplate": "/customers-and-books",
-            "UpstreamHttpMethod": [
-                "Get"
-            ]
+          "Host": "localhost",
+          "Port": 5005
         }
-    ]
+      ],
+      "SwaggerKey": "customer-api",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 10000,
+        "TimeoutValue": 3000
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/book-api",
+      "UpstreamHttpMethod": [
+        "Post",
+        "Get"
+      ],
+      "DownstreamPathTemplate": "/api/books",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5010
+        }
+      ],
+      "SwaggerKey": "book-api",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 10000,
+        "TimeoutValue": 3000
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15
+      },
+      "Key": "books"
+    },
+    {
+      "UpstreamPathTemplate": "/basket-api",
+      "UpstreamHttpMethod": [
+        "Post"
+      ],
+      "DownstreamPathTemplate": "/api/baskets",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5005
+        }
+      ],
+      "SwaggerKey": "basket-api",
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 10000,
+        "TimeoutValue": 3000
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "AddHeadersToRequest": {
+        "user_id": "Claims[user_id] > value"
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/basket-api/{everything}",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "DownstreamPathTemplate": "/api/baskets/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5005
+        }
+      ],
+      "SwaggerKey": "basket-api",
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 10000,
+        "TimeoutValue": 3000
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/order-api/{everything}",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "DownstreamPathTemplate": "/api/orders/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5015
+        }
+      ],
+      "SwaggerKey": "order-api",
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 10000,
+        "TimeoutValue": 3000
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    }
+  ],
+  "SwaggerEndPoints": [
+    {
+      "Key": "identity-api",
+      "Config": [
+        {
+          "Name": "Identity API",
+          "Version": "v1",
+          "Url": "http://localhost:5001/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "customer-api",
+      "Config": [
+        {
+          "Name": "Customer API",
+          "Version": "v1",
+          "Url": "http://localhost:5005/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "book-api",
+      "Config": [
+        {
+          "Name": "Book API",
+          "Version": "v1",
+          "Url": "http://localhost:5010/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "basket-api",
+      "Config": [
+        {
+          "Name": "Basket API",
+          "Version": "v1",
+          "Url": "http://localhost:5005/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "order-api",
+      "Config": [
+        {
+          "Name": "Order API",
+          "Version": "v1",
+          "Url": "http://localhost:5015/swagger/v1/swagger.json"
+        }
+      ]
+    }
+  ],
+  "Aggregates": [
+    {
+      "RouteKeys": [
+        "customers",
+        "books"
+      ],
+      "UpstreamPathTemplate": "/customers-and-books",
+      "UpstreamHttpMethod": [
+        "Get"
+      ]
+    }
+  ]
 }

@@ -6,6 +6,7 @@ using MediatR;
 using Services.Identity.Commands;
 using Services.Identity.Data;
 using Microsoft.EntityFrameworkCore;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace Services.Identity.Controllers
 {
@@ -28,6 +29,7 @@ namespace Services.Identity.Controllers
         }
 
         [HttpPost("sign-in")]
+        [SwaggerOperation(Summary = "Sign In User")]
         public async Task<IActionResult> SignIn(SignInDto reqeust)
         {
             var user = await _dbContext.Users
@@ -40,6 +42,7 @@ namespace Services.Identity.Controllers
         }
 
         [HttpPost("sign-up")]
+        [SwaggerOperation(Summary = "Register User")]
         public async Task<ActionResult> RegisterUser([FromBody] RegisterUserCommand command)
         {
             return Ok(await _mediator.Send(command));

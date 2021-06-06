@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Services.Customers.Data;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace Services.Orders.Controllers
 {
@@ -19,12 +20,14 @@ namespace Services.Orders.Controllers
         }
 
         [HttpGet("{id}")]
+        [SwaggerOperation(Summary = "Get Order By Id")]
         public async Task<ActionResult> Get(Guid id)
         {
             return Ok(await _dbContext.Orders.Include(i => i.Items).FirstOrDefaultAsync(s => s.Id == id));
         }
 
         [HttpGet("customerId/{id}")]
+        [SwaggerOperation(Summary = "Get Orders By Customer Id")]
         public async Task<ActionResult> GetOrdersByCustomerId(Guid id)
         {
             return Ok(await _dbContext.Orders.Where(s => s.CustomerId == id).ToListAsync());

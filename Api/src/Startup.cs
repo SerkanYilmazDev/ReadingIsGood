@@ -17,6 +17,7 @@ using Api.Controllers.Dtos;
 using Microsoft.Extensions.Hosting;
 using Shared;
 using Microsoft.AspNetCore.Http;
+using Microsoft.OpenApi.Models;
 
 namespace Api
 {
@@ -38,7 +39,13 @@ namespace Api
                         x.WithDictionaryHandle();
                     });
 
+            services.AddSwaggerForOcelot(Configuration);
             services.AddControllers();
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "V1" });
+            });
 
             // Api Gateway validates the JWT token which is created by the Identity Service.
             AddJwtAuthentication(services);
@@ -55,12 +62,19 @@ namespace Api
             }
 
             app.UseRouting();
+            app.UseSwagger();
             app.UseAuthorization();
             app.UseAuthentication();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
                 endpoints.MapGet("", async context => await context.Response.WriteAsync("Api Gateway is up."));
+            });
+
+            app.UseSwaggerForOcelotUI(opt =>
+            {
+                opt.PathToSwaggerGenerator = "/swagger/docs";
+
             });
 
             app.UseOcelot().Wait();
