@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Services.Identity.Data;
 
-namespace Services.Identity.Data.Migrations
+namespace Services.Identity.Migrations
 {
     [DbContext(typeof(IdentityDBContext))]
     partial class IdentityDBContextModelSnapshot : ModelSnapshot
@@ -16,9 +16,9 @@ namespace Services.Identity.Data.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasDefaultSchema("identity")
-                .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn)
-                .HasAnnotation("BookVersion", "3.1.2")
-                .HasAnnotation("Relational:MaxIdentifierLength", 63);
+                .UseIdentityByDefaultColumns()
+                .HasAnnotation("Relational:MaxIdentifierLength", 63)
+                .HasAnnotation("ProductVersion", "5.0.0");
 
             modelBuilder.Entity("Services.Identity.Data.User", b =>
                 {
