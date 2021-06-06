@@ -6,9 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Ocelot" Version="16.0.1" />
+    <PackageReference Include="MMLib.SwaggerForOcelot" Version="4.4.1" />
+    <PackageReference Include="Ocelot" Version="17.0.0" />
     <PackageReference Include="Ocelot.Cache.CacheManager" Version="16.0.1" />
     <PackageReference Include="Ocelot.Provider.Polly" Version="16.0.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.1" />
     <ProjectReference Include="..\..\Shared\src\Shared.csproj" />
   </ItemGroup>
 
