@@ -1,0 +1,44 @@
+version: '3.7'
+
+services:
+
+  api:
+    build: Api/.
+    container_name: api
+    ports:
+      - "5000:80"
+
+  identity:
+    build: Services.Identity/.
+    container_name: identity
+    ports:
+      - "5001:80"
+
+  customer:
+    build: Services.Customers/.
+    container_name: customer
+    ports:
+      - "5005:80"    
+
+  product:
+    build: Services.Products/.
+    container_name: product
+    ports:
+      - "5010:80"
+
+  order:
+    build: Services.Orders/.
+    container_name: order
+    ports:
+      - "5015:80"
+
+  notification:
+    build: Services.Notifications/.
+    container_name: notification
+    ports:
+      - "5020:80"
+
+networks:
+  default:
+    external:
+      name: demo_network
