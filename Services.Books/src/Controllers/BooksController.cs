@@ -43,5 +43,12 @@ namespace Services.Books.Controllers
         {
             return Ok(await _mediator.Send(command));
         }
+
+        [HttpPut("{id}")]
+        [SwaggerOperation(Summary = "Update Book")]
+        public async Task<ActionResult> UpdateBook(Guid id, UpdateBookCommand command)
+        {
+            return Ok(await _mediator.Send(command));
+        }
     }
 }

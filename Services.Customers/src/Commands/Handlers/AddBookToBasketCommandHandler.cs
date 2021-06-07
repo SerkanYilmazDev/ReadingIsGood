@@ -36,7 +36,6 @@ namespace Services.Customers.Commands.Handlers
                 book = await _bookHttpService.GetAsync(command.BookId);
                 if (book == null)
                 {
-                    // it's ok.
                     throw new Exception($"Book not found. Id: {command.BookId}");
                 }
                 else
@@ -48,6 +47,7 @@ namespace Services.Customers.Commands.Handlers
             var userId = Guid.Parse(_httpContextAccessor.HttpContext.Request.Headers["user_id"][0]);
 
             var basket = await _customerDbContext.Baskets.FirstOrDefaultAsync(q => q.CustomerId == userId);
+
             if (basket == null)
                 throw new Exception($"Basket not found for customer: {userId}");
 
@@ -72,7 +72,6 @@ namespace Services.Customers.Commands.Handlers
 
             await _customerDbContext.SaveChangesAsync();
 
-            // no event, just logging.
             _logger.LogInformation($"[Local Transaction] : {command.Quantity} {book.Name} added to basket.");
         }
 

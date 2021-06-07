@@ -20,7 +20,7 @@ namespace Shared.Logging
                     .WriteTo.Elasticsearch(new ElasticsearchSinkOptions(new Uri("http://localhost:9201/"))
                     {
                         AutoRegisterTemplate = true,
-                        IndexFormat = "demo-{0:yyyy.MM.dd}"
+                        IndexFormat = "readingIsGood-{0:yyyy.MM.dd}"
                     });
             });
         }

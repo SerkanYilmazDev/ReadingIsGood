@@ -15,6 +15,9 @@ using MediatR;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.OpenApi.Models;
+using FluentValidation;
+using Shared.Validation;
+using Shared.Logging;
 
 namespace Services.Books
 {
@@ -34,6 +37,9 @@ namespace Services.Books
             );
 
             services.AddMediatR(typeof(CreateBookCommandHandler).GetTypeInfo().Assembly);
+            services.AddValidatorsFromAssembly(typeof(Startup).Assembly);
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehaviour<,>));
 
             services.AddControllers();
 
