@@ -10,7 +10,7 @@
 
 * Run 'docker-compose up'
 
-Quick test from Postman ***_postman/postman_collection.json***
+Quick test from Postman ***_postman/ReadingIsGood.postman_collection.json***
 
 Quick test from Swagger ***localhost:5000/swagger
 
@@ -31,12 +31,8 @@ Quick test from Swagger ***localhost:5000/swagger
 
 ## Architecture
 
-<img src = "" />
+<img src = "https://github.com/SerkanYilmazDev/ReadingIsGood/blob/master/_images/architecture.png" />
 
-
-## Create Order: Success
-
-<img src = "" />
 
 
 
