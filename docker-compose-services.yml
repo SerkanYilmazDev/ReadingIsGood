@@ -20,9 +20,9 @@ services:
     ports:
       - "5005:80"    
 
-  product:
-    build: Services.Products/.
-    container_name: product
+  book:
+    build: Services.Books/.
+    container_name: book
     ports:
       - "5010:80"
 

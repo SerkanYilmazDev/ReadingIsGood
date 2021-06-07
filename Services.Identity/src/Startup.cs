@@ -14,6 +14,9 @@ using System.Reflection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.OpenApi.Models;
+using FluentValidation;
+using Shared.Validation;
+using Shared.Logging;
 
 namespace Api
 {
@@ -35,6 +38,9 @@ namespace Api
             services.AddScoped<IAuthenticationService, AuthenticationService>();
 
             services.AddMediatR(typeof(RegisterUserCommandHandler).GetTypeInfo().Assembly);
+            services.AddValidatorsFromAssembly(typeof(Startup).Assembly);
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehaviour<,>));
 
             services.AddControllers();
 

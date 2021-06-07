@@ -25,6 +25,7 @@ Quick test from Swagger ***localhost:5000/swagger
 * Polly
 * Docker - Docker Compose
 * Serilog
+* FluentValidation
 * Elasticsearch - Kibana
 * Grafana
 

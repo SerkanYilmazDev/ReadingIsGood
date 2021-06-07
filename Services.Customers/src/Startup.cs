@@ -16,6 +16,9 @@ using Microsoft.AspNetCore.Http;
 using System.Reflection;
 using MediatR;
 using Microsoft.OpenApi.Models;
+using FluentValidation;
+using Shared.Validation;
+using Shared.Logging;
 
 namespace Services.Customers
 {
@@ -42,7 +45,10 @@ namespace Services.Customers
             });
 
             services.AddMediatR(typeof(AddBookToBasketCommand).GetTypeInfo().Assembly);
-
+            services.AddValidatorsFromAssembly(typeof(Startup).Assembly);
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehaviour<,>));
+            
             services.AddControllers();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
